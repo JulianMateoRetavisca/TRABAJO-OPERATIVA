@@ -1,0 +1,90 @@
+{
+    "titulo": "Ejercicio 4: Bibliotecarios (Dual Sim\u00e9trico)",
+    "periodos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "horarios": [
+        "12AM-4AM",
+        "4AM-8AM",
+        "8AM-12PM",
+        "12PM-4PM",
+        "4PM-8PM",
+        "8PM-12AM"
+    ],
+    "demanda": [
+        3,
+        2,
+        10,
+        14,
+        8,
+        10
+    ],
+    "solucion_dual": 26,
+    "valores_duales": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0,
+        1.0
+    ],
+    "analisis": [
+        {
+            "Per\u00edodo": 1,
+            "Horario": "12AM-4AM",
+            "Demanda": 3,
+            "Precio Sombra": 0.0,
+            "Interpretaci\u00f3n": "FLEXIBLE - Hay cobertura sobrante"
+        },
+        {
+            "Per\u00edodo": 2,
+            "Horario": "4AM-8AM",
+            "Demanda": 2,
+            "Precio Sombra": 1.0,
+            "Interpretaci\u00f3n": "CR\u00cdTICO - Aumentar demanda requerir\u00eda + personal"
+        },
+        {
+            "Per\u00edodo": 3,
+            "Horario": "8AM-12PM",
+            "Demanda": 10,
+            "Precio Sombra": 0.0,
+            "Interpretaci\u00f3n": "FLEXIBLE - Hay cobertura sobrante"
+        },
+        {
+            "Per\u00edodo": 4,
+            "Horario": "12PM-4PM",
+            "Demanda": 14,
+            "Precio Sombra": 1.0,
+            "Interpretaci\u00f3n": "CR\u00cdTICO - Aumentar demanda requerir\u00eda + personal"
+        },
+        {
+            "Per\u00edodo": 5,
+            "Horario": "4PM-8PM",
+            "Demanda": 8,
+            "Precio Sombra": 0,
+            "Interpretaci\u00f3n": "FLEXIBLE - Hay cobertura sobrante"
+        },
+        {
+            "Per\u00edodo": 6,
+            "Horario": "8PM-12AM",
+            "Demanda": 10,
+            "Precio Sombra": 1.0,
+            "Interpretaci\u00f3n": "CR\u00cdTICO - Aumentar demanda requerir\u00eda + personal"
+        }
+    ],
+    "primal_valor": 26,
+    "primal_asignacion": [
+        0,
+        2,
+        8,
+        6,
+        7,
+        3
+    ],
+    "dualidad_verificada": true
+}

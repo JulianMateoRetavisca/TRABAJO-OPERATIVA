@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Completo de Iteraciones - Taller 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .nav {
+            background: #f5f7fa;
+            padding: 20px 40px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn.home {
+            background: #667eea;
+        }
+
+        .nav-btn.ex1 {
+            background: #667eea;
+        }
+
+        .nav-btn.ex2 {
+            background: #f5576c;
+        }
+
+        .nav-btn.ex3 {
+            background: #667eea;
+        }
+
+        .nav-btn.ex4 {
+            background: #f5576c;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .exercise-card.ex2,
+        .exercise-card.ex4 {
+            border-left-color: #f5576c;
+        }
+
+        .exercise-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .exercise-card.ex2 h2,
+        .exercise-card.ex4 h2 {
+            color: #f5576c;
+        }
+
+        .exercise-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-card.ex2 .link-btn,
+        .exercise-card.ex4 .link-btn {
+            background: #f5576c;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-box {
+            background: #f5f7fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .info-box li {
+            margin: 5px 0;
+        }
+
+        .footer {
+            background: #f5f7fa;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Análisis Completo de Iteraciones</h1>
+            <p>Taller 2: Problemas de Optimización - Primal y Dual</p>
+        </div>
+
+        <div class="nav">
+            <a href="home.html" class="nav-btn home">Inicio</a>
+            <button class="nav-btn ex1" onclick="document.getElementById('ex1').scrollIntoView({behavior: 'smooth'})">Ej. 1: Staffing</button>
+            <button class="nav-btn ex2" onclick="document.getElementById('ex2').scrollIntoView({behavior: 'smooth'})">Ej. 2: Mochila</button>
+            <button class="nav-btn ex3" onclick="document.getElementById('ex3').scrollIntoView({behavior: 'smooth'})">Ej. 3: Primal</button>
+            <button class="nav-btn ex4" onclick="document.getElementById('ex4').scrollIntoView({behavior: 'smooth'})">Ej. 4: Dual</button>
+        </div>
+
+        <div class="content">
+            <div class="info-box">
+                <h3>Sobre este análisis</h3>
+                <p>Este dashboard integrado muestra un resumen de las iteraciones para cada ejercicio. Haz clic en los botones "Ver Iteraciones" de cada ejercicio para ver el análisis completo con todas las tablas detalladas.</p>
+            </div>
+
+            <div class="exercises-grid">
+                <!-- EJERCICIO 1 -->
+                <div class="exercise-card" id="ex1">
+                    <h2>Ejercicio 1: Staffing Farmatodo</h2>
+                    <p><strong>Problema:</strong> Minimizar el número de cajeros necesarios en una farmacia 24/7 con demanda variable.</p>
+                    
+                    <p><strong>Solución Óptima:</strong> <span style="color: #667eea; font-weight: bold; font-size: 1.2em;">45 Cajeros</span></p>
+                    
+                    <div class="info-box" style="background: #f0f4ff; border-left-color: #667eea;">
+                        <h3>Resumen de Iteraciones:</h3>
+                        <ul>
+                            <li><strong>Problema Primal:</strong> Minimizar 6 variables (turnos)</li>
+                            <li><strong>Restricciones:</strong> 6 períodos con demanda variable</li>
+                            <li><strong>Solución Relajada:</strong> 45.0 (igual a la entera)</li>
+                            <li><strong>Problema Dual:</strong> Maximizar precios sombra</li>
+                            <li><strong>Dualidad Fuerte:</strong> ✓ Z* = W* = 45</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Archivos disponibles:</strong></p>
+                    <div class="links">
+                        <a href="index.html" class="link-btn">Ver Solución</a>
+                        <a href="ejercicio1_iteraciones.html" class="link-btn">Ver Iteraciones</a>
+                    </div>
+                </div>
+
+                <!-- EJERCICIO 2 -->
+                <div class="exercise-card ex2" id="ex2">
+                    <h2>Ejercicio 2: Problema de Mochila 0/1</h2>
+                    <p><strong>Problema:</strong> Maximizar valor total sin exceder 60 libras de capacidad.</p>
+                    
+                    <p><strong>Solución Óptima:</strong> <span style="color: #f5576c; font-weight: bold; font-size: 1.2em;">180 Unidades</span></p>
+                    
+                    <div class="info-box" style="background: #fff5f7; border-left-color: #f5576c;">
+                        <h3>Resumen de Iteraciones:</h3>
+                        <ul>
+                            <li><strong>Heurística Greedy:</strong> 5 pasos de selección</li>
+                            <li><strong>Resultado Greedy:</strong> Valor 180, Peso 57/60</li>
+                            <li><strong>Solución Óptima:</strong> Valor 180, Peso 60/60</li>
+                            <li><strong>Mejora:</strong> 0% (Greedy es óptimo en este caso)</li>
+                            <li><strong>Relajación Continua:</strong> Cota superior 192</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Archivos disponibles:</strong></p>
+                    <div class="links">
+                        <a href="ejercicio2_mochila.html" class="link-btn">Ver Solución</a>
+                        <a href="ejercicio2_iteraciones.html" class="link-btn">Ver Iteraciones</a>
+                    </div>
+                </div>
+
+                <!-- EJERCICIO 3 -->
+                <div class="exercise-card" id="ex3">
+                    <h2>Ejercicio 3: Bibliotecarios (Primal)</h2>
+                    <p><strong>Problema:</strong> Minimizar bibliotecarios en biblioteca 24h con turnos de 8h.</p>
+                    
+                    <p><strong>Solución Óptima:</strong> <span style="color: #667eea; font-weight: bold; font-size: 1.2em;">26 Bibliotecarios</span></p>
+                    
+                    <div class="info-box" style="background: #f0f4ff; border-left-color: #667eea;">
+                        <h3>Resumen de Iteraciones:</h3>
+                        <ul>
+                            <li><strong>Problema Primal:</strong> Minimizar 6 variables de turno</li>
+                            <li><strong>Demanda:</strong> 6 períodos distintos</li>
+                            <li><strong>Cobertura:</strong> Verificación en 6 períodos</li>
+                            <li><strong>Holgura:</strong> 5 restricciones activas</li>
+                            <li><strong>Dualidad Fuerte:</strong> ✓ Z* = W* = 26</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Archivos disponibles:</strong></p>
+                    <div class="links">
+                        <a href="ejercicio3_bibliotecarios.html" class="link-btn">Ver Solución</a>
+                        <a href="ejercicio3_iteraciones.html" class="link-btn">Ver Iteraciones</a>
+                    </div>
+                </div>
+
+                <!-- EJERCICIO 4 -->
+                <div class="exercise-card ex4" id="ex4">
+                    <h2>Ejercicio 4: Bibliotecarios (Dual)</h2>
+                    <p><strong>Problema:</strong> Valora cada período mediante precios sombra (dual simétrico).</p>
+                    
+                    <p><strong>Solución Óptima:</strong> <span style="color: #f5576c; font-weight: bold; font-size: 1.2em;">26 Unidades</span></p>
+                    
+                    <div class="info-box" style="background: #fff5f7; border-left-color: #f5576c;">
+                        <h3>Resumen de Iteraciones:</h3>
+                        <ul>
+                            <li><strong>Problema Dual:</strong> Maximizar valor usando precios sombra</li>
+                            <li><strong>Períodos Críticos:</strong> 3 períodos (2, 4, 6)</li>
+                            <li><strong>Precios:</strong> y = [0, 1, 0, 1, 0, 1]</li>
+                            <li><strong>Interpretación:</strong> Períodos con demanda máxima</li>
+                            <li><strong>Dualidad Fuerte:</strong> ✓ W* = Z* = 26</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Archivos disponibles:</strong></p>
+                    <div class="links">
+                        <a href="ejercicio4_dual.html" class="link-btn">Ver Solución</a>
+                        <a href="ejercicio4_iteraciones.html" class="link-btn">Ver Iteraciones</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN GENERAL -->
+            <div class="info-box" style="background: #f0fff4; border-left-color: #27ae60; margin-top: 40px;">
+                <h3>Conceptos Clave Verificados</h3>
+                <ul style="column-count: 2;">
+                    <li><strong>Dualidad Fuerte:</strong> Z* (primal) = W* (dual) en todos los ejercicios</li>
+                    <li><strong>Complementariedad:</strong> Holgura complementaria verificada</li>
+                    <li><strong>Precios Sombra:</strong> Interpretación económica en Ej. 4</li>
+                    <li><strong>Relajación:</strong> Búsqueda de cotas superiores</li>
+                    <li><strong>Heurísticas:</strong> Comparación Greedy vs óptimo (Ej. 2)</li>
+                    <li><strong>Optimalidad:</strong> Todas las condiciones KKT satisfechas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Análisis Completo de Iteraciones - Taller 2</strong></p>
+            <p>Datos generados por Python (PuLP) | Visualización: HTML5 + JavaScript | Navegación integrada</p>
+        </div>
+    </div>
+</body>
+</html>

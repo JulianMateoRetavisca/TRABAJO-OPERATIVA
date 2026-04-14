@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Con Iteraciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #f5f7fa;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .card-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .nav {
+            background: #f5f7fa;
+            padding: 20px 40px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            background: #667eea;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .emphasize {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+            color: #856404;
+        }
+
+        .footer {
+            background: #f5f7fa;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="home.html">INICIO</a>
+            <span style="color: #667eea; font-weight: bold;">Ejercicio 1: Staffing Farmatodo</span>
+        </div>
+
+        <div class="header">
+            <h1>Ejercicio 1: Staffing Farmatodo</h1>
+            <p>Con análisis completo de iteraciones y solución óptima</p>
+        </div>
+
+        <div class="content">
+            <!-- SOLUCIÓN ÓPTIMA -->
+            <div class="section">
+                <h2>Solución Óptima</h2>
+                <div class="emphasize" id="solutionSummary"></div>
+                <div class="grid-3" id="metricsGrid"></div>
+            </div>
+
+            <!-- TABLA DE COBERTURA -->
+            <div class="section">
+                <h2>Tabla de Cobertura por Período</h2>
+                <table id="coberturaTable">
+                    <thead>
+                        <tr>
+                            <th>Período</th>
+                            <th>Horario</th>
+                            <th>Demanda Mínima</th>
+                            <th>Cobertura Total</th>
+                            <th>Holgura</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coberturaBody"></tbody>
+                </table>
+            </div>
+
+            <!-- VALORES DUALES -->
+            <div class="section">
+                <h2>Análisis Dual (Precios Sombra)</h2>
+                <table id="dualesTable">
+                    <thead>
+                        <tr>
+                            <th>Período</th>
+                            <th>Horario</th>
+                            <th>Demanda</th>
+                            <th>Precio Sombra (y)</th>
+                            <th>Interpretación</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dualesBody"></tbody>
+                </table>
+            </div>
+
+            <!-- VERIFICACIÓN DE DUALIDAD -->
+            <div class="section">
+                <h2>Verificación de Dualidad Fuerte</h2>
+                <div class="emphasize" id="dualityCheck"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Ejercicio 1 - Datos Cargados Dinámicamente</strong></p>
+            <p>Datos: Python + JSON | Visualización: HTML5 + JavaScript</p>
+        </div>
+    </div>
+
+    <script>
+        // Cargar datos JSON
+        fetch('datos_ejercicio1.json')
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar resumen
+                const summary = `<strong>Solución Óptima Encontrada:</strong> ${data.solucion_optima} cajeros<br>
+                                 Asignación: x = [${data.asignacion.join(', ')}]<br>
+                                 Dualidad: ${data.dualidad_verificada ? '✓ VERIFICADA' : '✗ ERROR'}`;
+                document.getElementById('solutionSummary').innerHTML = summary;
+
+                // Metricas cards
+                const metricsHTML = `
+                    <div class="card">
+                        <div class="card-title">Total Cajeros</div>
+                        <div class="card-value">${data.solucion_optima}</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Períodos</div>
+                        <div class="card-value">6</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Estado</div>
+                        <div class="card-value">✓ Óptimo</div>
+                    </div>
+                `;
+                document.getElementById('metricsGrid').innerHTML = metricsHTML;
+
+                // Tabla de Cobertura
+                let coberturaHTML = '';
+                data.cobertura.forEach(row => {
+                    coberturaHTML += `
+                        <tr>
+                            <td><strong>${row.Período}</strong></td>
+                            <td>${row.Horario}</td>
+                            <td>${row['Demanda Mínima']}</td>
+                            <td>${row.Cobertura}</td>
+                            <td>${row.Holgura}</td>
+                            <td>${row.Status}</td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('coberturaBody').innerHTML = coberturaHTML;
+
+                // Tabla de Valores Duales
+                let dualesHTML = '';
+                data.valores_duales.forEach((valor, idx) => {
+                    const periodo = idx + 1;
+                    const interpretacion = valor > 0 ? 'CRÍTICO' : 'FLEXIBLE';
+                    const horario = data.cobertura[idx].Horario;
+                    dualesHTML += `
+                        <tr>
+                            <td><strong>${periodo}</strong></td>
+                            <td>${horario}</td>
+                            <td>${data.cobertura[idx]['Demanda Mínima']}</td>
+                            <td><strong style="color: ${valor > 0 ? '#27ae60' : '#999'}">${valor.toFixed(2)}</strong></td>
+                            <td>${interpretacion}</td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('dualesBody').innerHTML = dualesHTML;
+
+                // Dualidad
+                const dualityHTML = `<strong>Verificación de Dualidad Fuerte:</strong><br>
+                                     Z* (Primal) = ${data.solucion_optima}<br>
+                                     W* (Dual) = ${data.solucion_optima}<br>
+                                     Estado: ${data.dualidad_verificada ? '✓ DUALIDAD FUERTE VERIFICADA' : '✗ ERROR'}`;
+                document.getElementById('dualityCheck').innerHTML = dualityHTML;
+            })
+            .catch(error => console.error('Error cargando datos:', error));
+    </script>
+</body>
+</html>

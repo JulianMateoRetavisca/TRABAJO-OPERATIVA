@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Con Iteraciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #f5576c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f5576c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #fff5f7;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #f5576c;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #f5576c;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .card-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #f093fb;
+        }
+
+        .nav {
+            background: #fff5f7;
+            padding: 20px 40px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            background: #f5576c;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .emphasize {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+            color: #856404;
+        }
+
+        .badge-critico {
+            background: #d4edda;
+            color: #155724;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .badge-flexible {
+            background: #f8f9fa;
+            color: #6c757d;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            background: #f5f7fa;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="home.html">INICIO</a>
+            <span style="color: #f5576c; font-weight: bold;">Ejercicio 4: Bibliotecarios (Dual)</span>
+        </div>
+
+        <div class="header">
+            <h1>Ejercicio 4: Bibliotecarios (Problema Dual Simétrico)</h1>
+            <p>Valoración de períodos críticos mediante precios sombra</p>
+        </div>
+
+        <div class="content">
+            <!-- SOLUCIÓN ÓPTIMA -->
+            <div class="section">
+                <h2>Solución Óptima Dual</h2>
+                <div class="emphasize" id="solutionSummary"></div>
+                <div class="grid-3" id="metricsGrid"></div>
+            </div>
+
+            <!-- PRECIOS SOMBRA -->
+            <div class="section">
+                <h2>Precios Sombra por Período (Variables Duales)</h2>
+                <table id="preciosTable">
+                    <thead>
+                        <tr>
+                            <th>Período</th>
+                            <th>Horario</th>
+                            <th>Demanda</th>
+                            <th>Precio Sombra (y)</th>
+                            <th>Tipo de Período</th>
+                            <th>Interpretación</th>
+                        </tr>
+                    </thead>
+                    <tbody id="preciosBody"></tbody>
+                </table>
+            </div>
+
+            <!-- COMPARACIÓN PRIMAL-DUAL -->
+            <div class="section">
+                <h2>Relación Primal-Dual (Ejercicio 3 vs Ejercicio 4)</h2>
+                <table id="relacionTable">
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Problema Primal (Ej. 3)</th>
+                            <th>Problema Dual (Ej. 4)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="relacionBody"></tbody>
+                </table>
+            </div>
+
+            <!-- DUALIDAD FUERTE -->
+            <div class="section">
+                <h2>✔ Verificación de Dualidad Fuerte</h2>
+                <div class="emphasize" id="dualityCheck"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Ejercicio 4 - Datos Cargados Dinámicamente desde Python</strong></p>
+            <p>Datos: Python + PuLP | JSON | Visualización: HTML5 + JavaScript</p>
+        </div>
+    </div>
+
+    <script>
+        fetch('datos_ejercicio4.json')
+            .then(response => response.json())
+            .then(data => {
+                // Resumen
+                const summary = `<strong>Solución Óptima Dual:</strong> W* = ${data.solucion_dual}<br>
+                                 <strong>Precios Sombra:</strong> y = [${data.valores_duales.map(v => v.toFixed(2)).join(', ')}]<br>
+                                 <strong>Períodos Críticos:</strong> ${data.valores_duales.filter(v => v > 0).length} de 6<br>
+                                 <strong>Dualidad:</strong> ${data.dualidad_verificada ? '✓ Z* = W* = ' + data.solucion_dual : '✗ ERROR'}`;
+                document.getElementById('solutionSummary').innerHTML = summary;
+
+                // Metricas
+                const metricsHTML = `
+                    <div class="card">
+                        <div class="card-title">Valor Dual</div>
+                        <div class="card-value">${data.solucion_dual}</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Períodos Críticos</div>
+                        <div class="card-value">${data.valores_duales.filter(v => v > 0).length}</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Estado</div>
+                        <div class="card-value">✓ Óptimo</div>
+                    </div>
+                `;
+                document.getElementById('metricsGrid').innerHTML = metricsHTML;
+
+                // Precios
+                let preciosHTML = '';
+                data.analisis.forEach((row, idx) => {
+                    const badge = data.valores_duales[idx] > 0 ? 
+                        '<span class="badge-critico">CRÍTICO</span>' : 
+                        '<span class="badge-flexible">FLEXIBLE</span>';
+                    preciosHTML += `
+                        <tr ${data.valores_duales[idx] > 0 ? 'style="background: #f0f8ff;"' : ''}>
+                            <td><strong>${row.Período}</strong></td>
+                            <td>${row.Horario}</td>
+                            <td>${row.Demanda}</td>
+                            <td><strong style="color: ${data.valores_duales[idx] > 0 ? '#f5576c' : '#999'}">${data.valores_duales[idx].toFixed(2)}</strong></td>
+                            <td>${badge}</td>
+                            <td><small>${row.Interpretación}</small></td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('preciosBody').innerHTML = preciosHTML;
+
+                // Relación Primal-Dual
+                const relacionHTML = `
+                    <tr>
+                        <td><strong>Objetivo</strong></td>
+                        <td>Minimizar personal</td>
+                        <td>Maximizar valor</td>
+                    </tr>
+                    <tr style="background: #f5f7fa;">
+                        <td><strong>Variables</strong></td>
+                        <td>x_i (bibliotecarios)</td>
+                        <td>y_j (precios sombra)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Restricciones</strong></td>
+                        <td>6 demandas a cubrir</td>
+                        <td>6 restricciones de costo</td>
+                    </tr>
+                    <tr style="background: #f5f7fa;">
+                        <td><strong>Valor Óptimo</strong></td>
+                        <td>${data.primal_valor}</td>
+                        <td>${data.solucion_dual}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asignación/Valoración</strong></td>
+                        <td>${data.primal_asignacion.join(', ')}</td>
+                        <td>${data.valores_duales.map(v => v.toFixed(2)).join(', ')}</td>
+                    </tr>
+                `;
+                document.getElementById('relacionBody').innerHTML = relacionHTML;
+
+                // Dualidad
+                const dualityHTML = `<strong>Teorema de Dualidad Fuerte:</strong><br>
+                                     Si el primal tiene solución óptima finita, entonces el dual también la tiene, y sus valores óptimos son iguales.<br><br>
+                                     <strong>En este caso:</strong><br>
+                                     Z* (Primal - Ej. 3) = ${data.primal_valor}<br>
+                                     W* (Dual - Ej. 4) = ${data.solucion_dual}<br><br>
+                                     <strong>Estado:</strong> ${data.dualidad_verificada ? '✓ DUALIDAD FUERTE VERIFICADA' : '✗ ERROR'}`;
+                document.getElementById('dualityCheck').innerHTML = dualityHTML;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
