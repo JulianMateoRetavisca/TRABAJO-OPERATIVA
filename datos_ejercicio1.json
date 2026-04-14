@@ -1,0 +1,71 @@
+{
+    "titulo": "Ejercicio 1: Staffing Farmatodo",
+    "solucion_optima": 45,
+    "asignacion": [
+        2,
+        18,
+        0,
+        20,
+        0,
+        5
+    ],
+    "cobertura": [
+        {
+            "Per\u00edodo": 1,
+            "Horario": "1 (3-7)",
+            "Demanda": 7,
+            "Cobertura": 7,
+            "Holgura": 0,
+            "Status": "\u2713"
+        },
+        {
+            "Per\u00edodo": 2,
+            "Horario": "2 (7-11)",
+            "Demanda": 20,
+            "Cobertura": 20,
+            "Holgura": 0,
+            "Status": "\u2713"
+        },
+        {
+            "Per\u00edodo": 3,
+            "Horario": "3 (11-15)",
+            "Demanda": 14,
+            "Cobertura": 18,
+            "Holgura": 4,
+            "Status": "\u2713"
+        },
+        {
+            "Per\u00edodo": 4,
+            "Horario": "4 (15-19)",
+            "Demanda": 20,
+            "Cobertura": 20,
+            "Holgura": 0,
+            "Status": "\u2713"
+        },
+        {
+            "Per\u00edodo": 5,
+            "Horario": "5 (19-23)",
+            "Demanda": 10,
+            "Cobertura": 20,
+            "Holgura": 10,
+            "Status": "\u2713"
+        },
+        {
+            "Per\u00edodo": 6,
+            "Horario": "6 (23-3)",
+            "Demanda": 5,
+            "Cobertura": 5,
+            "Holgura": 0,
+            "Status": "\u2713"
+        }
+    ],
+    "valores_duales": [
+        2.0001778e-12,
+        1.0,
+        1.0000889e-12,
+        1.0,
+        0.0,
+        1.0
+    ],
+    "dualidad_verificada": true
+}

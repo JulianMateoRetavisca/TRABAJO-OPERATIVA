@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Iteraciones Detalladas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .nav {
+            background: #fff5f7;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f5576c;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #f5576c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f5576c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #fff5f7;
+        }
+
+        .iteration-card {
+            background: #fff5f7;
+            border-left: 5px solid #f5576c;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .iteration-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .iteration-number {
+            display: inline-block;
+            background: #f5576c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .iteration-content {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            display: none;
+        }
+
+        .iteration-content.show {
+            display: block;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #f5576c;
+        }
+
+        .metric-label {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #f5576c;
+        }
+
+        .status-aceptado {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .status-rechazado {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #f5f7fa;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="home.html">INICIO</a>
+            <span style="color: #f5576c; font-weight: bold;">Ejercicio 2 - Iteraciones Detalladas Greedy</span>
+        </div>
+
+        <div class="header">
+            <h1>Ejercicio 2: Problema de Mochila 0/1</h1>
+            <p>Iteraciones Detalladas del Algoritmo Greedy</p>
+        </div>
+
+        <div class="content">
+            <!-- RESUMEN ÓPTIMO -->
+            <div class="section">
+                <h2>Solución Óptima vs Greedy</h2>
+                <div class="metric-grid" id="metricsGrid"></div>
+            </div>
+
+            <!-- ITERACIONES GREEDY -->
+            <div class="section">
+                <h2>Iteraciones de la Heurística Greedy</h2>
+                <p>Selección paso a paso por relación Valor/Peso:</p>
+                <div id="iterationsContainer"></div>
+            </div>
+
+            <!-- TABLA DE ARTÍCULOS -->
+            <div class="section">
+                <h2>Tabla de Artículos</h2>
+                <table id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>Artículo</th>
+                            <th>Valor</th>
+                            <th>Peso</th>
+                            <th>V/P</th>
+                            <th>Greedy</th>
+                            <th>Óptimo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Ejercicio 2 - Iteraciones Greedy Detalladas</strong></p>
+            <p>Datos: Python + JSON | Visualización: HTML5 + JavaScript</p>
+        </div>
+    </div>
+
+    <script>
+        fetch('datos_ejercicio2_detallado.json')
+            .then(response => response.json())
+            .then(data => {
+                // Métricas
+                const metricsHTML = `
+                    <div class="metric-card">
+                        <div class="metric-label">Valor Óptimo</div>
+                        <div class="metric-value">${data.solucion_optima}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Valor Greedy</div>
+                        <div class="metric-value">${data.greedy_valor}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Mejora</div>
+                        <div class="metric-value">${data.mejora_porcentaje.toFixed(1)}%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Iteraciones</div>
+                        <div class="metric-value">${data.iteraciones_greedy.length}</div>
+                    </div>
+                `;
+                document.getElementById('metricsGrid').innerHTML = metricsHTML;
+
+                // Iteraciones
+                let iterationsHTML = '';
+                data.iteraciones_greedy.forEach(iter => {
+                    const statusClass = iter.estado === "✓ ACEPTADO" ? "status-aceptado" : "status-rechazado";
+                    iterationsHTML += `
+                        <div class="iteration-card">
+                            <div>
+                                <span class="iteration-number">Paso ${iter.numero}</span>
+                                <span>${iter.articulo}</span>
+                                <span class="${statusClass}">${iter.estado}</span>
+                            </div>
+                            <div class="iteration-content">
+                                <p><strong>Relación V/P:</strong> ${iter.ratio.toFixed(2)}</p>
+                                <p><strong>Valor:</strong> ${iter.valor} | <strong>Peso:</strong> ${iter.peso}</p>
+                                <p><strong>Peso antes:</strong> ${iter.peso_usado_antes}/${data.capacidad}</p>
+                                <p><strong>Peso después:</strong> ${iter.peso_usado_despues}/${data.capacidad}</p>
+                                <p><strong>Valor acumulado:</strong> ${iter.valor_acumulado}</p>
+                                <p><strong>Descripción:</strong> ${iter.descripcion}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                document.getElementById('iterationsContainer').innerHTML = iterationsHTML;
+                
+                // Agregar event listeners a todas las tarjetas
+                document.querySelectorAll('.iteration-card').forEach(card => {
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', function() {
+                        const content = this.querySelector('.iteration-content');
+                        if (content) {
+                            content.classList.toggle('show');
+                        }
+                    });
+                });
+
+                // Tabla de artículos
+                let itemsHTML = '';
+                data.articulos.forEach((art, idx) => {
+                    const greedy = data.greedy_valor === data.solucion_optima && 
+                                 data.seleccionados[idx] === 1 ? "✓" : "";
+                    const optimo = data.seleccionados[idx] === 1 ? "✓" : "";
+                    itemsHTML += `
+                        <tr>
+                            <td><strong>${art}</strong></td>
+                            <td>${data.valores[idx]}</td>
+                            <td>${data.pesos[idx]}</td>
+                            <td>${(data.valores[idx]/data.pesos[idx]).toFixed(2)}</td>
+                            <td>${greedy}</td>
+                            <td>${optimo}</td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('itemsBody').innerHTML = itemsHTML;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

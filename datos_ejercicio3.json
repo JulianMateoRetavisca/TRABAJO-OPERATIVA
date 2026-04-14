@@ -1,0 +1,96 @@
+{
+    "titulo": "Ejercicio 3: Bibliotecarios (Primal)",
+    "periodos": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "horarios": [
+        "12AM-4AM",
+        "4AM-8AM",
+        "8AM-12PM",
+        "12PM-4PM",
+        "4PM-8PM",
+        "8PM-12AM"
+    ],
+    "demanda": [
+        3,
+        2,
+        10,
+        14,
+        8,
+        10
+    ],
+    "solucion_optima": 26,
+    "asignacion": [
+        0,
+        2,
+        8,
+        6,
+        7,
+        3
+    ],
+    "cobertura": [
+        {
+            "Per\u00edodo": 1,
+            "Horario": "12AM-4AM",
+            "Demanda": 3,
+            "Cobertura": 3,
+            "Holgura": 0,
+            "Status": "\u2713 EXACTO"
+        },
+        {
+            "Per\u00edodo": 2,
+            "Horario": "4AM-8AM",
+            "Demanda": 2,
+            "Cobertura": 2,
+            "Holgura": 0,
+            "Status": "\u2713 EXACTO"
+        },
+        {
+            "Per\u00edodo": 3,
+            "Horario": "8AM-12PM",
+            "Demanda": 10,
+            "Cobertura": 10,
+            "Holgura": 0,
+            "Status": "\u2713 EXACTO"
+        },
+        {
+            "Per\u00edodo": 4,
+            "Horario": "12PM-4PM",
+            "Demanda": 14,
+            "Cobertura": 14,
+            "Holgura": 0,
+            "Status": "\u2713 EXACTO"
+        },
+        {
+            "Per\u00edodo": 5,
+            "Horario": "4PM-8PM",
+            "Demanda": 8,
+            "Cobertura": 13,
+            "Holgura": 5,
+            "Status": "\u2713 HOLGURA"
+        },
+        {
+            "Per\u00edodo": 6,
+            "Horario": "8PM-12AM",
+            "Demanda": 10,
+            "Cobertura": 10,
+            "Holgura": 0,
+            "Status": "\u2713 EXACTO"
+        }
+    ],
+    "valores_duales": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0,
+        1.0
+    ],
+    "valor_dual": 26,
+    "dualidad_verificada": true
+}
