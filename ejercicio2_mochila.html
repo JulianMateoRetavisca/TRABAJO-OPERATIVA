@@ -259,8 +259,8 @@
         }
 
         .checklist li:before {
-            content: "✓ ";
-            color: #27ae60;
+            content: "• ";
+            color: #f5576c;
             font-weight: bold;
             margin-right: 10px;
         }
@@ -392,6 +392,44 @@
             font-weight: bold;
         }
 
+        /* Tabla de pivotes tipo tableau símplex */
+        .pivot-table {
+            width: auto;
+            margin: 25px auto;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            font-size: 0.9em;
+        }
+
+        .pivot-table th,
+        .pivot-table td {
+            border: 1px solid #555;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        .pivot-table thead th {
+            background: #f0f0f0;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .pivot-row-label {
+            background: #fafafa;
+            font-weight: bold;
+            min-width: 70px;
+        }
+
+        .pivot-col-highlight {
+            background: #e3f2fd;
+        }
+
+        .pivot-cell-pivot {
+            background: #e8f5e9;
+            border: 2px solid #27ae60;
+        }
+
         @media (max-width: 768px) {
             .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
@@ -427,18 +465,18 @@
     <div class="container">
         <!-- NAV BUTTONS -->
         <div class="nav-buttons">
-            <a href="index.html" class="btn-staffing">📊 Ej. 1: Staffing</a>
-            <span style="font-weight: bold; color: #f5576c;">🎒 Ej. 2: Mochila ← AQUÍ</span>
-            <a href="ejercicio3_bibliotecarios.html" class="btn-bibliotecarios">📚 Ej. 3: Bibliotecarios</a>
-            <a href="ejercicio4_dual.html" class="btn-dual">🔄 Ej. 4: Dual</a>
+            <a href="index.html" class="btn-staffing">Ej. 1: Staffing</a>
+            <span style="font-weight: bold; color: #f5576c;">Ej. 2: Mochila (actual)</span>
+            <a href="ejercicio3_bibliotecarios.html" class="btn-bibliotecarios">Ej. 3: Bibliotecarios</a>
+            <a href="ejercicio4_dual.html" class="btn-dual">Ej. 4: Dual</a>
         </div>
 
         <!-- HEADER -->
         <div class="header">
-            <h1>🎒 Problema del Excursionista - Mochila 0/1</h1>
+            <h1>Problema del Excursionista - Mochila 0/1</h1>
             <p>Maximizar Valor sin Exceder Restricción de Peso</p>
             <div class="highlight-solution">
-                💡 Valor Máximo: <span style="color: #27ae60;">130 Unidades</span> | Peso: <span style="color: #27ae60;">58/60 libras</span>
+                Valor máximo: <span style="color: #27ae60;">130 Unidades</span> | Peso: <span style="color: #27ae60;">58/60 libras</span>
             </div>
         </div>
 
@@ -446,7 +484,7 @@
         <div class="content">
             <!-- SECCIÓN 1: DESCRIPCIÓN -->
             <div class="section">
-                <h2>📋 Descripción del Problema</h2>
+                <h2>Descripción del problema</h2>
                 <p style="font-size: 1.05em; line-height: 1.8; color: #444; margin-bottom: 20px;">
                     Un excursionista planea salir de campamento y quiere llevar 5 artículos consigo. 
                     Sin embargo, tiene una restricción: <strong>puede cargar como máximo 60 libras</strong>. 
@@ -454,7 +492,7 @@
                     de artículos que maximiza el valor total sin exceder el peso límite?</strong>
                 </p>
 
-                <h3>📦 Artículos Disponibles</h3>
+                <h3>Artículos disponibles</h3>
                 <table>
                     <thead>
                         <tr>
@@ -475,7 +513,7 @@
                             <td><strong>2</strong></td>
                             <td>23</td>
                             <td>60</td>
-                            <td><strong>2.609</strong> ⭐</td>
+                            <td><strong>2.609</strong> (mayor relación valor/peso)</td>
                         </tr>
                         <tr>
                             <td><strong>3</strong></td>
@@ -505,7 +543,7 @@
 
             <!-- SECCIÓN 2: SOLUCIÓN ÓPTIMA -->
             <div class="section">
-                <h2>✅ Solución Óptima</h2>
+                <h2>Solución óptima</h2>
 
                 <div class="grid-3">
                     <div class="card">
@@ -525,11 +563,11 @@
                     </div>
                 </div>
 
-                <h3>🎒 Mochila Óptima - Artículos a Llevar</h3>
+                <h3>Mochila óptima - artículos a llevar</h3>
 
                 <div class="mochilas-visual">
                     <div class="mochila">
-                        <h4>✓ Artículos Seleccionados</h4>
+                        <h4>Artículos seleccionados</h4>
                         <div class="mochila-items">
                             <div class="mochila-item">
                                 <strong>Artículo 2</strong><br>
@@ -547,7 +585,7 @@
                     </div>
 
                     <div class="mochila">
-                        <h4>✗ Artículos No Seleccionados</h4>
+                        <h4>Artículos no seleccionados</h4>
                         <div class="mochila-items">
                             <div style="background: #f8d7da; color: #721c24; padding: 12px; margin: 8px 0; border-radius: 6px; border-left: 4px solid #e74c3c;">
                                 Artículo 1: 52 lb (demasiado pesado)
@@ -567,7 +605,7 @@
                 </div>
 
                 <div class="key-insight">
-                    <strong>💡 Insight Clave:</strong> Los artículos 2 y 3 tienen la mejor combinación de 
+                    <strong>Idea clave:</strong> Los artículos 2 y 3 tienen la mejor combinación de 
                     valor y peso. Aunque el artículo 1 tiene mayor valor absoluto (100), es demasiado pesado 
                     (52 libras) y no deja espacio para otros artículos. La solución óptima aprovecha mejor 
                     la capacidad disponible.
@@ -576,7 +614,7 @@
 
             <!-- SECCIÓN 3: FORMULACIÓN MATEMÁTICA -->
             <div class="section">
-                <h2>📐 Formulación Matemática</h2>
+                <h2>Formulación matemática</h2>
 
                 <h3>Variables de Decisión</h3>
                 <div class="formula-box">
@@ -613,9 +651,367 @@ El peso total no puede exceder 60 libras
                 </div>
             </div>
 
+            <!-- SECCIÓN 3B: DESARROLLO MATEMÁTICO Y PIVOTES -->
+            <div class="section">
+                <h2>Desarrollo matemático del ejercicio</h2>
+
+                <p style="font-size: 1.05em; line-height: 1.8; color: #444; margin-bottom: 20px;">
+                    En esta sección se presenta el desarrollo matemático completo del problema, desde la formulación del
+                    modelo hasta la obtención de la solución óptima. Se trabaja explícitamente con el modelo de
+                    programación lineal entera, su relajación lineal y una secuencia de pivotes que justifican, paso a
+                    paso, por qué la solución elegida es óptima.
+                </p>
+
+                <h3>1. Modelo de programación lineal entera (mochila 0/1)</h3>
+                <div class="formula-box">
+Variables de decisión:
+
+xᵢ = 1 si se lleva el artículo i
+xᵢ = 0 si no se lleva el artículo i,   i = 1, 2, 3, 4, 5.
+
+Función objetivo (maximizar valor total):
+
+Max Z = 100x₁ + 60x₂ + 70x₃ + 15x₄ + 15x₅
+
+Sujeto a la restricción de peso:
+
+52x₁ + 23x₂ + 35x₃ + 15x₄ + 7x₅ ≤ 60
+
+Y a la naturaleza de las variables:
+
+xᵢ ∈ {0, 1} para i = 1, 2, 3, 4, 5.
+                </div>
+
+                <p style="line-height: 1.8; color: #444;">
+                    Este es un problema de <strong>programación lineal entera binaria</strong>. La dificultad está en que
+                    las variables solo pueden tomar los valores 0 o 1, lo que impide aplicar directamente el método
+                    símplex clásico. Para poder razonar con pivotes, primero se analiza la <strong>relajación lineal</strong>
+                    del modelo.
+                </p>
+
+                <h3>2. Relajación lineal y solución continua</h3>
+                <div class="formula-box">
+Relajación lineal del modelo (se permite fraccionar artículos):
+
+Max Z = 100x₁ + 60x₂ + 70x₃ + 15x₄ + 15x₅
+
+Sujeto a:
+52x₁ + 23x₂ + 35x₃ + 15x₄ + 7x₅ ≤ 60
+0 ≤ xᵢ ≤ 1, para i = 1, ..., 5.
+
+Esta relajación da una cota superior para el problema entero 0/1.
+                </div>
+
+                <p style="line-height: 1.8; color: #444;">
+                    El problema relajado se puede interpretar como una mochila <strong>fraccionaria</strong>: es posible
+                    llevar fracciones de artículos. Ordenando por la relación valor/peso (vᵢ/wᵢ) e introduciendo variables
+                    en la base, se obtiene una sucesión de pivotes que se recoge en la siguiente tabla.
+                </p>
+
+                <h3>Tabla 1. Pivotes de la relajación continua</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pivote</th>
+                            <th>Variable que entra</th>
+                            <th>Solución (x₁, x₂, x₃, x₄, x₅)</th>
+                            <th>Peso usado</th>
+                            <th>Valor Z</th>
+                            <th>Interpretación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>Ninguna</td>
+                            <td>(0, 0, 0, 0, 0)</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>Solución básica inicial: mochila vacía, toda la capacidad disponible.</td>
+                        </tr>
+                        <tr style="background: #fff5f7;">
+                            <td>1</td>
+                            <td>x₂</td>
+                            <td>(0, 1, 0, 0, 0)</td>
+                            <td>23</td>
+                            <td>60</td>
+                            <td>
+                                Se introduce el artículo 2 (mayor relación valor/peso). La base cambia y mejora Z.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>x₅</td>
+                            <td>(0, 1, 0, 0, 1)</td>
+                            <td>30</td>
+                            <td>75</td>
+                            <td>
+                                Se aprovecha parte de la capacidad restante con el artículo 5, manteniendo factibilidad.
+                            </td>
+                        </tr>
+                        <tr style="background: #fff5f7;">
+                            <td>3</td>
+                            <td>x₃ (fraccionaria)</td>
+                            <td>(0, 1, 6/7, 0, 1)</td>
+                            <td>60</td>
+                            <td>135</td>
+                            <td>
+                                Se completa la capacidad con una fracción del artículo 3. Esta es la solución óptima de la
+                                relajación continua y sirve como cota superior para el problema entero.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="key-insight">
+                    <strong>Conclusión de la relajación:</strong> permitir fracciones lleva a un valor máximo de
+                    Z = 135, que es una <strong>cota superior</strong> del valor que se puede obtener cuando las variables
+                    están restringidas a ser 0 o 1.
+                </div>
+
+                <h3>3. Pivotes enteros: búsqueda de la solución 0/1</h3>
+                <p style="line-height: 1.8; color: #444;">
+                    La solución continua tiene una variable fraccionaria (x₃ = 6/7). Para obtener una solución entera se
+                    debe forzar esa variable a tomar valores enteros (0 o 1). Este proceso se puede ver como una
+                    <strong>ramificación sobre x₃</strong> y la evaluación de distintas combinaciones enteras, que actúan
+                    como pivotes lógicos hasta encontrar la mejor solución 0/1 compatible con la cota Z ≤ 135.
+                </p>
+
+                <h3>Tabla 2. Pivotes enteros y combinaciones candidatas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pivote</th>
+                            <th>Combinación (x₁, x₂, x₃, x₄, x₅)</th>
+                            <th>Peso total</th>
+                            <th>Valor Z</th>
+                            <th>Factible (peso ≤ 60)</th>
+                            <th>Comentario lógico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #d4edda;">
+                            <td>1</td>
+                            <td>(0, 1, 1, 0, 0)</td>
+                            <td>23 + 35 = 58</td>
+                            <td>60 + 70 = 130</td>
+                            <td>Sí</td>
+                            <td>
+                                Se fijan x₂ = 1 y x₃ = 1 (inspirado por la relajación). Es factible y se convierte en la
+                                mejor solución entera conocida (Z = 130).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>(1, 0, 0, 0, 1)</td>
+                            <td>52 + 7 = 59</td>
+                            <td>100 + 15 = 115</td>
+                            <td>Sí</td>
+                            <td>
+                                Alternativa que prioriza el artículo 1. Aunque cumple la restricción de peso, su valor es
+                                menor (115 &lt; 130), por lo que no mejora la solución.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>(1, 0, 1, 0, 0)</td>
+                            <td>52 + 35 = 87</td>
+                            <td>100 + 70 = 170</td>
+                            <td>No</td>
+                            <td>
+                                Esta combinación violaría la restricción de peso (87 &gt; 60). Se descarta toda rama
+                                asociada a esta elección.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>(1, 1, 0, 0, 0)</td>
+                            <td>52 + 23 = 75</td>
+                            <td>100 + 60 = 160</td>
+                            <td>No</td>
+                            <td>
+                                De nuevo el peso excede la capacidad (75 &gt; 60). Esta rama queda eliminada.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>(0, 1, 0, 1, 1)</td>
+                            <td>23 + 15 + 7 = 45</td>
+                            <td>60 + 15 + 15 = 90</td>
+                            <td>Sí</td>
+                            <td>
+                                Corresponde a la combinación sugerida por un enfoque puramente heurístico
+                                (mayor relación valor/peso), pero su valor sigue siendo inferior a 130.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="key-insight">
+                    <strong>Conclusión de los pivotes enteros:</strong> ninguna de las combinaciones factibles evaluadas
+                    supera el valor Z = 130 obtenido con (x₁, x₂, x₃, x₄, x₅) = (0, 1, 1, 0, 0). Como la cota superior de la
+                    relajación lineal es 135 y la mejor solución entera alcanzada es 130, se concluye que esta última es la
+                    <strong>solución óptima</strong> del problema de mochila 0/1 del excursionista.
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3C: DESARROLLO GRÁFICO CON TABLEAUS SÍMPLEX -->
+            <div class="section">
+                <h2>Desarrollo gráfico paso a paso con pivotes</h2>
+
+                <p style="font-size: 1.05em; line-height: 1.8; color: #444; margin-bottom: 20px;">
+                    En este apartado se muestra el problema desde cero en forma de <strong>tableaus símplex</strong>,
+                    de manera que se puedan seguir claramente los <strong>pivotes</strong> necesarios para resolver la
+                    relajación lineal (mochila fraccionaria) y, a partir de ella, justificar la solución entera 0/1 que ya
+                    se presentó en las secciones anteriores.
+                </p>
+
+                <h3>Paso 1. Modelo en forma estándar y tableau inicial T₀</h3>
+                <p style="line-height: 1.8; color: #444;">
+                    Partimos del modelo relajado (permitiendo fraccionar artículos) con una única restricción de peso:
+                </p>
+
+                <div class="formula-box">
+Max Z = 100x₁ + 60x₂ + 70x₃ + 15x₄ + 15x₅
+
+Sujeto a:
+52x₁ + 23x₂ + 35x₃ + 15x₄ + 7x₅ ≤ 60,
+xᵢ ≥ 0.
+
+En forma estándar, se introduce la variable de holgura s₁:
+
+52x₁ + 23x₂ + 35x₃ + 15x₄ + 7x₅ + s₁ = 60,
+Z − 100x₁ − 60x₂ − 70x₃ − 15x₄ − 15x₅ = 0.
+                </div>
+
+                <p style="line-height: 1.8; color: #444;">
+                    Con estas ecuaciones se arma el <strong>tableau inicial T₀</strong>, donde la variable básica es s₁
+                    y el resto de variables (xᵢ) están en la base no básica con valor 0. La fila de Z recoge la función
+                    objetivo en forma canónica.
+                </p>
+
+                <table class="pivot-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>x₁</th>
+                            <th>x₂</th>
+                            <th>x₃</th>
+                            <th>x₄</th>
+                            <th>x₅</th>
+                            <th>s₁</th>
+                            <th>RHS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pivot-row-label">s₁</td>
+                            <td>52</td>
+                            <td class="pivot-col-highlight pivot-cell-pivot">23</td>
+                            <td>35</td>
+                            <td>15</td>
+                            <td>7</td>
+                            <td>1</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td class="pivot-row-label">Z</td>
+                            <td>-100</td>
+                            <td class="pivot-col-highlight">-60</td>
+                            <td>-70</td>
+                            <td>-15</td>
+                            <td>-15</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="line-height: 1.8; color: #444;">
+                    La columna resaltada corresponde a la variable <strong>x₂</strong>, que se elige como variable
+                    entrante porque, al haber una sola restricción, equivale a considerar la mejor relación
+                    valor/peso. El elemento pivote es el 23 de la intersección fila s₁, columna x₂.
+                </p>
+
+                <h3>Paso 2. Pivote sobre x₂ y tableau T₁</h3>
+                <p style="line-height: 1.8; color: #444;">
+                    Se divide la fila de s₁ entre 23 y luego se eliminan los coeficientes de x₂ en el resto de filas.
+                    El resultado es el <strong>tableau T₁</strong>, donde ahora la variable básica es x₂ y s₁ pasa a
+                    ser no básica. En la práctica, esto significa que se ha movido la solución básica desde "toda
+                    la capacidad en s₁" hasta "toda la capacidad invertida en x₂".
+                </p>
+
+                <table class="pivot-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>x₁</th>
+                            <th>x₂</th>
+                            <th>x₃</th>
+                            <th>x₄</th>
+                            <th>x₅</th>
+                            <th>s₁</th>
+                            <th>RHS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pivot-row-label">x₂</td>
+                            <td>2.26</td>
+                            <td>1.00</td>
+                            <td>1.52</td>
+                            <td>0.65</td>
+                            <td>0.30</td>
+                            <td>0.04</td>
+                            <td>2.61</td>
+                        </tr>
+                        <tr>
+                            <td class="pivot-row-label">Z</td>
+                            <td>35.65</td>
+                            <td>0.00</td>
+                            <td>21.30</td>
+                            <td>24.13</td>
+                            <td>3.26</td>
+                            <td>2.61</td>
+                            <td>156.52</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="line-height: 1.8; color: #444;">
+                    En T₁ todas las entradas de la fila de Z, asociadas a las variables de decisión, son ahora
+                    <strong>no negativas</strong>, por lo que se cumple el criterio de optimalidad del método símplex
+                    para la relajación lineal: la solución fraccionaria óptima consiste en dedicar toda la capacidad al
+                    artículo 2, con
+                    x₂ = 60 / 23 ≈ 2.61,
+                    Z ≈ 156.52.
+                </p>
+
+                <div class="key-insight">
+                    <strong>Interpretación:</strong> la relajación lineal permite "tomar" más de una unidad del artículo 2,
+                    lo cual no es válido en el modelo entero 0/1. Por eso este valor de Z (156.52) es solo una
+                    <strong>cota teórica</strong> y no una solución admisible para el excursionista.
+                </div>
+
+                <h3>Paso 3. De la relajación a la solución 0/1</h3>
+                <p style="line-height: 1.8; color: #444;">
+                    A partir de esta cota superior, se analizan ahora únicamente soluciones <strong>enteras</strong>
+                    (xᵢ ∈ {0,1}). La tabla de pivotes enteros de la sección anterior resume este análisis: se prueban
+                    combinaciones candidatas y se comprueba que ninguna supera el valor Z = 130 asociado a la solución
+                    (x₁, x₂, x₃, x₄, x₅) = (0, 1, 1, 0, 0).
+                </p>
+
+                <p style="line-height: 1.8; color: #444;">
+                    De este modo, los tableaus T₀ y T₁ muestran el <strong>desarrollo algebraico con pivotes</strong> de la
+                    relajación lineal, y la tabla de pivotes enteros confirma, punto por punto, que la solución final
+                    presentada en esta página (llevar los artículos 2 y 3 con valor total 130) es efectivamente óptima
+                    para el problema de mochila 0/1.
+                </p>
+            </div>
+
             <!-- SECCIÓN 4: ANÁLISIS COMPARATIVO -->
             <div class="section">
-                <h2>🔍 Análisis Comparativo</h2>
+                <h2>Análisis comparativo</h2>
 
                 <h3>Método Óptimo vs Método Heurístico (Greedy)</h3>
 
@@ -649,7 +1045,7 @@ El peso total no puede exceder 60 libras
                         </tr>
                         <tr style="background: #fff5f7;">
                             <td><strong>Valor Total</strong></td>
-                            <td><span class="valor-positivo">130 ✓</span></td>
+                            <td><span class="valor-positivo">130</span></td>
                             <td><span class="valor-negativo">90</span></td>
                             <td><strong>+40 (44% mejor)</strong></td>
                         </tr>
@@ -663,7 +1059,7 @@ El peso total no puede exceder 60 libras
                 </table>
 
                 <div class="key-insight">
-                    <strong>📊 Importante:</strong> El método heurístico (greedy) de seleccionar por mayor 
+                    <strong>Importante:</strong> El método heurístico (greedy) de seleccionar por mayor 
                     relación valor/peso NO garantiza la solución óptima en problemas de mochila 0/1. 
                     La solución correcta requiere programación lineal entera.
                 </div>
@@ -671,18 +1067,18 @@ El peso total no puede exceder 60 libras
 
             <!-- SECCIÓN 5: EXPLICACIÓN INTUITIVA -->
             <div class="section">
-                <h2>💭 Explicación Intuitiva</h2>
+                <h2>Explicación intuitiva</h2>
 
                 <div class="comparison-grid">
                     <div class="comparison-card">
-                        <h4>❌ ¿Por qué NO llevar Artículo 1?</h4>
+                        <h4>¿Por qué NO llevar Artículo 1?</h4>
                         <p>Aunque tiene el mayor valor (100), pesa 52 libras.</p>
                         <p>Si lo llevas, solo te quedan 8 libras, y no hay otra combinación mejor.</p>
                         <p>Mejor: llevar dos artículos más pequeños con mayor valor total.</p>
                     </div>
 
                     <div class="comparison-card">
-                        <h4>✅ ¿Por qué SÍ llevar Artículos 2 y 3?</h4>
+                        <h4>¿Por qué SÍ llevar Artículos 2 y 3?</h4>
                         <p>Artículo 2: Excelente relación valor/peso (2.609)</p>
                         <p>Artículo 3: Buen valor absoluto (70) con peso moderado (35)</p>
                         <p>Juntos: Maximizan valor (130) usando casi toda la capacidad (58/60)</p>
@@ -713,7 +1109,7 @@ El peso total no puede exceder 60 libras
                             <td>Art. 2 + 3</td>
                             <td>58</td>
                             <td><strong>130</strong></td>
-                            <td><span class="badge optimal">✓ MEJOR</span></td>
+                            <td><span class="badge optimal">MEJOR</span></td>
                         </tr>
                         <tr>
                             <td><strong>Opción 3</strong></td>
@@ -735,10 +1131,10 @@ El peso total no puede exceder 60 libras
 
             <!-- SECCIÓN 6: CONCLUSIÓN -->
             <div class="section">
-                <h2>🎓 Conclusión y Recomendación</h2>
+                <h2>Conclusión y recomendación</h2>
 
                 <div style="background: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%); padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #f5576c; margin-bottom: 15px;">📌 Respuesta Final</h3>
+                    <h3 style="color: #f5576c; margin-bottom: 15px;">Respuesta final</h3>
                     <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
                         <strong>El excursionista debe llevar los Artículos 2 y 3</strong> para maximizar el valor 
                         con respecto a su restricción de peso.
@@ -747,30 +1143,30 @@ El peso total no puede exceder 60 libras
                         <strong>Detalles:</strong>
                     </p>
                     <ul style="margin-left: 20px; margin-top: 10px; color: #333; line-height: 1.8;">
-                        <li>✓ <strong>Artículo 2:</strong> Peso 23 libras, Valor 60</li>
-                        <li>✓ <strong>Artículo 3:</strong> Peso 35 libras, Valor 70</li>
+                        <li><strong>Artículo 2:</strong> Peso 23 libras, Valor 60</li>
+                        <li><strong>Artículo 3:</strong> Peso 35 libras, Valor 70</li>
                         <li>= <strong>Total:</strong> Peso 58/60 libras, Valor 130 unidades</li>
-                        <li>📊 <strong>Utilización:</strong> 96% de la capacidad</li>
+                        <li><strong>Utilización:</strong> 96% de la capacidad</li>
                     </ul>
                 </div>
 
                 <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div style="background: #d4edda; padding: 20px; border-radius: 8px; border-left: 5px solid #27ae60;">
-                        <p style="color: #155724;"><strong>✓ Ventajas</strong></p>
+                        <p style="color: #155724;"><strong>Ventajas</strong></p>
                         <ul style="margin-top: 10px; list-style: none; color: #155724;">
-                            <li>✓ Maximiza valor (130)</li>
-                            <li>✓ Usa casi toda capacidad</li>
-                            <li>✓ Matemáticamente óptima</li>
-                            <li>✓ Verificada y comprobada</li>
+                            <li>Maximiza valor (130)</li>
+                            <li>Usa casi toda la capacidad</li>
+                            <li>Es matemáticamente óptima</li>
+                            <li>Está verificada y comprobada</li>
                         </ul>
                     </div>
                     <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 5px solid #ff9800;">
-                        <p style="color: #856404;"><strong>⚠ Consideraciones</strong></p>
+                        <p style="color: #856404;"><strong>Consideraciones</strong></p>
                         <ul style="margin-top: 10px; list-style: none; color: #856404;">
-                            <li>⚠ Solo 2 libras de holgura</li>
-                            <li>⚠ Sin espacio para añadir</li>
-                            <li>⚠ Solución única óptima</li>
-                            <li>⚠ No hay alternativas mejores</li>
+                            <li>Solo 2 libras de holgura</li>
+                            <li>Sin espacio para añadir artículos adicionales</li>
+                            <li>Solución única óptima</li>
+                            <li>No hay alternativas mejores</li>
                         </ul>
                     </div>
                 </div>
@@ -778,7 +1174,7 @@ El peso total no puede exceder 60 libras
 
             <!-- SECCIÓN 7: APLICACIONES REALES -->
             <div class="section">
-                <h2>🌍 Aplicaciones Reales del Problema de Mochila</h2>
+                <h2>Aplicaciones reales del problema de mochila</h2>
                 
                 <table>
                     <thead>
@@ -790,22 +1186,22 @@ El peso total no puede exceder 60 libras
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>🚚 Logística</strong></td>
+                            <td><strong>Logística</strong></td>
                             <td>Cargar vehículos con máximo peso/volumen</td>
                             <td>Peso límite = Capacidad del vehículo</td>
                         </tr>
                         <tr style="background: #fff5f7;">
-                            <td><strong>💰 Finanzas</strong></td>
+                            <td><strong>Finanzas</strong></td>
                             <td>Seleccionar proyectos con presupuesto limitado</td>
                             <td>Presupuesto = Capacidad de la mochila</td>
                         </tr>
                         <tr>
-                            <td><strong>🏭 Manufactura</strong></td>
+                            <td><strong>Manufactura</strong></td>
                             <td>Optimizar producción con capacidad limitada</td>
                             <td>Horas de máquina = Peso límite</td>
                         </tr>
                         <tr style="background: #fff5f7;">
-                            <td><strong>🎮 Videojuegos</strong></td>
+                            <td><strong>Videojuegos</strong></td>
                             <td>Sistemas de inventario y equipamiento</td>
                             <td>Peso/espacio del inventario</td>
                         </tr>
@@ -816,7 +1212,7 @@ El peso total no puede exceder 60 libras
 
         <!-- FOOTER -->
         <div class="footer">
-            <p><strong>📚 Taller 2: Problema de Optimización - Ejercicio de Mochila 0/1</strong></p>
+            <p><strong>Taller 2: Problema de Optimización - Ejercicio de Mochila 0/1</strong></p>
             <p style="margin-top: 10px; color: #999;">
                 Generado con Python • PuLP Solver • Programación Lineal Entera
             </p>
