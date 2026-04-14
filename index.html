@@ -403,18 +403,19 @@
     <div class="container">
         <!-- NAV BUTTONS -->
         <div class="nav-buttons">
-            <span style="font-weight: bold; color: #667eea;">📊 Ej. 1: Staffing ← AQUÍ</span>
-            <a href="ejercicio2_mochila.html" class="btn-mochila">🎒 Ej. 2: Mochila</a>
-            <a href="ejercicio3_bibliotecarios.html" class="btn-bibliotecarios">📚 Ej. 3: Bibliotecarios</a>
-            <a href="ejercicio4_dual.html" class="btn-dual">🔄 Ej. 4: Dual</a>
+            <a href="home.html" style="display: inline-block; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; background: #f39c12; color: white; transition: all 0.3s ease; margin-right: 10px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">INICIO</a>
+            <span style="font-weight: bold; color: #667eea;">Ej. 1: Staffing ← AQUÍ</span>
+            <a href="ejercicio2_mochila.html" class="btn-mochila">Ej. 2: Mochila</a>
+            <a href="ejercicio3_bibliotecarios.html" class="btn-bibliotecarios">Ej. 3: Bibliotecarios</a>
+            <a href="ejercicio4_dual.html" class="btn-dual">Ej. 4: Dual</a>
         </div>
 
         <!-- HEADER -->
         <div class="header">
-            <h1>🏪 FARMATODO - Planificación Óptima de Cajeros</h1>
+            <h1>FARMATODO - Planificación Óptima de Cajeros</h1>
             <p>Solución mediante Programación Lineal (Primal y Dual)</p>
             <div class="highlight-solution">
-                💡 Mínimo de Cajeros: <span style="color: #27ae60;">45 Personas</span>
+                Mínimo de Cajeros: <span style="color: #27ae60;">45 Personas</span>
             </div>
         </div>
 
@@ -422,14 +423,14 @@
         <div class="content">
             <!-- SECCIÓN 1: DESCRIPCIÓN DEL PROBLEMA -->
             <div class="section">
-                <h2>📋 Descripción del Problema</h2>
+                <h2>Descripción del Problema</h2>
                 <p style="font-size: 1.05em; line-height: 1.8; color: #444; margin-bottom: 20px;">
                     Una tienda Farmatodo abierta 24 horas necesita determinar el número mínimo de cajeros para satisfacer la demanda 
                     en 6 períodos de 4 horas cada uno. Los cajeros trabajan 8 horas consecutivas (2 períodos). Se debe optimizar 
                     la distribución de turnos para minimizar el costo de personal mientras se garantiza la cobertura de demanda.
                 </p>
 
-                <h3>📊 Demanda por Período</h3>
+                <h3>Demanda por Período</h3>
                 <table>
                     <thead>
                         <tr>
@@ -482,7 +483,7 @@
 
             <!-- SECCIÓN 2: SOLUCIÓN ÓPTIMA -->
             <div class="section">
-                <h2>✅ Solución Óptima</h2>
+                <h2>Solución Óptima</h2>
                 
                 <div class="grid-3">
                     <div class="card">
@@ -502,7 +503,7 @@
                     </div>
                 </div>
 
-                <h3>📍 Distribución de Turnos por Período Inicial</h3>
+                <h3>Distribución de Turnos por Período Inicial</h3>
                 <table>
                     <thead>
                         <tr>
@@ -552,7 +553,7 @@
                     </tbody>
                 </table>
 
-                <h3>🎯 Verificación de Cobertura de Demanda</h3>
+                <h3>Verificación de Cobertura de Demanda</h3>
                 <table>
                     <thead>
                         <tr>
@@ -619,7 +620,7 @@
 
             <!-- SECCIÓN 3: VISUALIZACIÓN -->
             <div class="section">
-                <h2>📊 Análisis Gráfico</h2>
+                <h2>Análisis Gráfico</h2>
                 <div class="image-container">
                     <img src="Analisis_Staffing_Grafico.png" alt="Análisis Completo de Staffing">
                     <p style="color: #666; margin-top: 10px; font-size: 0.95em;">
@@ -638,11 +639,11 @@
 
             <!-- SECCIÓN 4: MODELO PRIMAL vs DUAL -->
             <div class="section">
-                <h2>🔄 Modelo Primal vs Dual</h2>
+                <h2>Modelo Primal vs Dual</h2>
                 
                 <div class="comparison-grid">
                     <div class="comparison-card primal">
-                        <h4>📌 MODELO PRIMAL (Decisión)</h4>
+                        <h4>MODELO PRIMAL (Decisión)</h4>
                         <p><strong>Objetivo:</strong> Minimizar total de cajeros</p>
                         <p style="margin-top: 15px;"><strong>Variables:</strong></p>
                         <p>x₁, x₂, x₃, x₄, x₅, x₆</p>
@@ -660,7 +661,7 @@
                     </div>
 
                     <div class="comparison-card dual">
-                        <h4>💎 MODELO DUAL (Valoración)</h4>
+                        <h4>MODELO DUAL (Valoración)</h4>
                         <p><strong>Objetivo:</strong> Maximizar valor de cobertura</p>
                         <p style="margin-top: 15px;"><strong>Variables:</strong></p>
                         <p>y₁, y₂, y₃, y₄, y₅, y₆</p>
@@ -678,7 +679,7 @@
                     </div>
                 </div>
 
-                <h3>💡 Valores Duales (Precios Sombra)</h3>
+                <h3>Valores Duales (Precios Sombra)</h3>
                 <table>
                     <thead>
                         <tr>
@@ -736,7 +737,7 @@
                 </table>
 
                 <div class="key-insight">
-                    <strong>🎯 Insight Clave:</strong> Los períodos 2, 4 y 6 son críticos (y=1.0). 
+                    <strong>Insight Clave:</strong> Los períodos 2, 4 y 6 son críticos (y=1.0). 
                     Cualquier cambio en su demanda afecta directamente el total de personal. 
                     Los períodos 1, 3 y 5 tienen flexibilidad para absorber cambios.
                 </div>
@@ -744,9 +745,9 @@
 
             <!-- SECCIÓN 5: TEORÍA MATEMÁTICA -->
             <div class="section">
-                <h2>📐 Verificación Matemática</h2>
+                <h2>Verificación Matemática</h2>
 
-                <h3>🔗 Dualidad Fuerte</h3>
+                <h3>Dualidad Fuerte</h3>
                 <div class="formula-box">
 Teorema: Si el problema primal tiene solución óptima finita,
 su dual también la tiene, y son iguales.
@@ -755,7 +756,7 @@ Z* = W*
 45 = 45 ✓ VERIFICADO
                 </div>
 
-                <h3>🔀 Holgura Complementaria</h3>
+                <h3>Holgura Complementaria</h3>
                 <p style="margin-bottom: 15px;">
                     <strong>Teorema:</strong> Para soluciones óptimas (x*, y*), se cumple:
                 </p>
@@ -767,7 +768,7 @@ Z* = W*
                     </ul>
                 </div>
 
-                <h3>✅ Detalles de la Verificación</h3>
+                <h3>Detalles de la Verificación</h3>
                 <table>
                     <thead>
                         <tr>
@@ -820,7 +821,7 @@ Z* = W*
 
             <!-- SECCIÓN 6: RECOMENDACIONES -->
             <div class="section">
-                <h2>💼 Recomendaciones Prácticas</h2>
+                <h2>Recomendaciones Prácticas</h2>
                 
                 <div class="checklist">
                     <ul>
@@ -835,7 +836,7 @@ Z* = W*
                     </ul>
                 </div>
 
-                <h3>📈 Sensibilidad a Cambios de Demanda</h3>
+                <h3>Sensibilidad a Cambios de Demanda</h3>
                 <table>
                     <thead>
                         <tr>
@@ -876,7 +877,7 @@ Z* = W*
 
             <!-- SECCIÓN 7: CONCLUSIÓN -->
             <div class="section">
-                <h2>🎓 Conclusión</h2>
+                <h2>Conclusión</h2>
                 
                 <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 30px; border-radius: 10px;">
                     <p style="font-size: 1.1em; line-height: 1.8; color: #333; margin-bottom: 20px;">
@@ -918,7 +919,7 @@ Z* = W*
 
         <!-- FOOTER -->
         <div class="footer">
-            <p><strong>📚 Taller 2: Modelos Primal y Dual - Ejercicios 2 y 3</strong></p>
+            <p><strong>Taller 2: Modelos Primal y Dual - Ejercicios 2 y 3</strong></p>
             <p style="margin-top: 10px; color: #999;">
                 Generado con Python • PuLP Solver • Análisis de Programación Lineal
             </p>

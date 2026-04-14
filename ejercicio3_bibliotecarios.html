@@ -300,18 +300,19 @@
     <div class="container">
         <!-- NAV BUTTONS -->
         <div class="nav-buttons">
-            <a href="index.html" class="btn-ex1">📊 Ej. 1: Staffing</a>
-            <a href="ejercicio2_mochila.html" class="btn-ex2">🎒 Ej. 2: Mochila</a>
-            <span style="font-weight: bold; color: #667eea;">📚 Ej. 3: Bibliotecarios ← AQUÍ</span>
-            <a href="ejercicio4_dual.html" class="btn-ex4">🔄 Ej. 4: Dual</a>
+            <a href="home.html" style="display: inline-block; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; background: #f39c12; color: white; transition: all 0.3s ease; margin-right: 10px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">INICIO</a>
+            <a href="index.html" class="btn-ex1">Ej. 1: Staffing</a>
+            <a href="ejercicio2_mochila.html" class="btn-ex2">Ej. 2: Mochila</a>
+            <span style="font-weight: bold; color: #667eea;">Ej. 3: Bibliotecarios ← AQUÍ</span>
+            <a href="ejercicio4_dual.html" class="btn-ex4">Ej. 4: Dual</a>
         </div>
 
         <!-- HEADER -->
         <div class="header">
-            <h1>📚 Ejercicio 3: Problema de Bibliotecarios</h1>
+            <h1>Ejercicio 3: Problema de Bibliotecarios</h1>
             <p>Minimizar Personal con Turnos de 8 Horas (24 horas/día)</p>
             <div class="highlight-solution">
-                💡 Mínimo: <span style="color: #27ae60;">26 Bibliotecarios</span>
+                Mínimo: <span style="color: #27ae60;">26 Bibliotecarios</span>
             </div>
         </div>
 
@@ -319,14 +320,14 @@
         <div class="content">
             <!-- SECCIÓN 1: DESCRIPCIÓN -->
             <div class="section">
-                <h2>📋 Descripción del Problema</h2>
+                <h2>Descripción del Problema</h2>
                 <p style="font-size: 1.05em; line-height: 1.8; color: #444; margin-bottom: 20px;">
                     Una biblioteca universitaria abre <strong>24 horas del día</strong>, divididas en 6 períodos de <strong>4 horas cada uno</strong>. 
                     <strong>Cada bibliotecario trabaja 8 horas consecutivas</strong> (2 períodos), comenzando al inicio de uno de los 6 períodos. 
                     Se debe determinar cuántos bibliotecarios asignar a cada período para <strong>minimizar el número total</strong> mientras se satisface la demanda.
                 </p>
 
-                <h3>📊 Demanda por Período</h3>
+                <h3>Demanda por Período</h3>
                 <table>
                     <thead>
                         <tr>
@@ -383,7 +384,7 @@
 
             <!-- SECCIÓN 2: FORMULACIÓN -->
             <div class="section">
-                <h2>📐 Formulación Matemática</h2>
+                <h2>Formulación Matemática</h2>
 
                 <h3>Variables de Decisión</h3>
                 <div class="formula-box">
@@ -461,7 +462,7 @@ x_i ≥ 0 y enteros, ∀ i
 
             <!-- SECCIÓN 3: SOLUCIÓN ÓPTIMA -->
             <div class="section">
-                <h2>✅ Solución Óptima</h2>
+                <h2>Solución Óptima</h2>
 
                 <div class="grid-3">
                     <div class="card">
@@ -481,7 +482,7 @@ x_i ≥ 0 y enteros, ∀ i
                     </div>
                 </div>
 
-                <h3>📍 Distribución Óptima de Turnos</h3>
+                <h3>Distribución Óptima de Turnos</h3>
                 <table>
                     <thead>
                         <tr>
@@ -539,7 +540,7 @@ x_i ≥ 0 y enteros, ∀ i
                 </table>
 
                 <div class="key-insight">
-                    <strong>💡 Insight Clave:</strong> La solución asigna 0 bibliotecarios al período 1, 
+                    <strong>Insight Clave:</strong> La solución asigna 0 bibliotecarios al período 1, 
                     porque la demanda baja (3) se cubre con los bibliotecarios del período anterior (período 6). 
                     El período 4 (12 PM - 4 PM) es crítico pues tiene la máxima demanda (14) y debe satisfacerse exactamente.
                 </div>
@@ -547,7 +548,7 @@ x_i ≥ 0 y enteros, ∀ i
 
             <!-- SECCIÓN 4: COMPARACIÓN CON HEURÍSTICA -->
             <div class="section">
-                <h2>🔍 Análisis Comparativo</h2>
+                <h2>Análisis Comparativo</h2>
 
                 <h3>Método Óptimo vs Proporcional</h3>
                 <p style="margin-bottom: 15px;">
@@ -587,10 +588,10 @@ x_i ≥ 0 y enteros, ∀ i
 
             <!-- SECCIÓN 5: CONCLUSIÓN -->
             <div class="section">
-                <h2>🎓 Conclusión</h2>
+                <h2>Conclusión</h2>
 
                 <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #667eea; margin-bottom: 15px;">📌 Respuesta Final</h3>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Respuesta Final</h3>
                     <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
                         <strong>La biblioteca debe contratar 26 bibliotecarios</strong> con la siguiente distribución de turnos:
                     </p>
@@ -631,7 +632,7 @@ x_i ≥ 0 y enteros, ∀ i
 
             <!-- SECCIÓN 6: RELACIÓN CON EJERCICIO 4 -->
             <div class="section">
-                <h2>🔗 Relación con Ejercicio 4 (Dual)</h2>
+                <h2>Relación con Ejercicio 4 (Dual)</h2>
 
                 <p style="margin-bottom: 15px;">
                     El Ejercicio 4 plantea el <strong>problema dual</strong> de este problema primal. 
@@ -657,7 +658,7 @@ x_i ≥ 0 y enteros, ∀ i
 
         <!-- FOOTER -->
         <div class="footer">
-            <p><strong>📚 Taller 2: Ejercicio 3 - Problema de Bibliotecarios</strong></p>
+            <p><strong>Taller 2: Ejercicio 3 - Problema de Bibliotecarios</strong></p>
             <p style="margin-top: 10px; color: #999;">
                 Generado con Python • PuLP Solver • Programación Lineal Entera
             </p>

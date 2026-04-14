@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller 2 - Problemas de Optimización</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.85;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            padding: 30px 25px;
+            color: white;
+            text-align: center;
+        }
+
+        .card-header.staffing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-header.mochila {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .card-header.bibliotecarios {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-header.dual {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .card-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .card-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .card-header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .solution-highlight {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 20px;
+        }
+
+        .solution-highlight.mochila {
+            border-left-color: #f5576c;
+        }
+
+        .solution-highlight.dual {
+            border-left-color: #f5576c;
+        }
+
+        .solution-label {
+            color: #999;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .solution-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .solution-highlight.mochila .solution-value {
+            color: #f5576c;
+        }
+
+        .solution-highlight.dual .solution-value {
+            color: #f5576c;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+        }
+
+        .card-features li:last-child {
+            border-bottom: none;
+        }
+
+        .card-features li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+        }
+
+        .card-button.staffing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-button.mochila {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .card-button.bibliotecarios {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-button.dual {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .card-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .footer {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .footer-description {
+            color: #666;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .techniques-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .technique-badge {
+            background: #f5f7fa;
+            padding: 12px;
+            border-radius: 8px;
+            color: #667eea;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .exercises-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card-header h2 {
+                font-size: 1.5em;
+            }
+
+            .card-icon {
+                font-size: 2.5em;
+            }
+        }
+
+        .intro-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .badge-info {
+            display: inline-block;
+            background: #e8f4f8;
+            color: #0c5460;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>TALLER 2: Optimización y Dualidad</h1>
+            <p>Programación Lineal - Problemas de Decisión</p>
+            <div class="subtitle">
+                Sistema de Ejercicios Integrados con Soluciones Óptimas
+            </div>
+        </div>
+
+        <!-- INTRODUCCIÓN -->
+        <div class="intro-section">
+            <h2>Bienvenido</h2>
+            <p>
+                Este sistema presenta <strong>4 problemas clásicos de optimización</strong> resueltos mediante 
+                <strong>programación lineal y teoría de dualidad</strong>. Cada problema ilustra conceptos fundamentales 
+                de la investigación operativa y análisis de sensibilidad.
+            </p>
+            <p>
+                <span class="badge-info"> Programación Lineal</span>
+                <span class="badge-info">Dualidad</span>
+                <span class="badge-info">PuLP Solver</span>
+                <span class="badge-info">Análisis</span>
+            </p>
+        </div>
+
+        <!-- GRID DE EJERCICIOS -->
+        <div class="exercises-grid">
+            <!-- EJERCICIO 1 -->
+            <div class="exercise-card">
+                <div class="card-header staffing">
+                    <div class="card-icon"></div>
+                    <h2>Ejercicio 1</h2>
+                    <p>Staffing Farmatodo</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Minimizar el número de cajeros necesarios en una farmacia 24/7, considerando turnos de 8 horas y demanda variable por período.
+                    </p>
+                    
+                    <div class="solution-highlight">
+                        <div class="solution-label">Solución Óptima</div>
+                        <div class="solution-value">45 Cajeros</div>
+                    </div>
+
+                    <ul class="card-features">
+                        <li>Problema Primal: Minimización</li>
+                        <li>Problema Dual: Maximización</li>
+                        <li>6 períodos de 4 horas</li>
+                        <li>Dualidad Fuerte Verificada</li>
+                    </ul>
+
+                    <a href="index.html" class="card-button staffing">
+                        Ver Solución Detallada →
+                    </a>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 2 -->
+            <div class="exercise-card">
+                <div class="card-header mochila">
+                    <div class="card-icon"></div>
+                    <h2>Ejercicio 2</h2>
+                    <p>Problema de Mochila</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Maximizar el valor total llevado por un excursionista sin exceder la capacidad de 60 libras. Problema clásico de optimización discreta.
+                    </p>
+                    
+                    <div class="solution-highlight mochila">
+                        <div class="solution-label">Valor Máximo</div>
+                        <div class="solution-value">130 Unidades</div>
+                    </div>
+
+                    <ul class="card-features">
+                        <li>Programación Entera 0/1</li>
+                        <li>5 artículos disponibles</li>
+                        <li>Capacidad: 60 libras</li>
+                        <li>Análisis Greedy vs Óptimo</li>
+                    </ul>
+
+                    <a href="ejercicio2_mochila.html" class="card-button mochila">
+                        Ver Solución Detallada →
+                    </a>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 3 -->
+            <div class="exercise-card">
+                <div class="card-header bibliotecarios">
+                    <div class="card-icon"></div>
+                    <h2>Ejercicio 3</h2>
+                    <p>Bibliotecarios (Primal)</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Minimizar bibliotecarios en una biblioteca 24 horas con turnos de 8 horas consecutivas y demanda variable en 6 períodos.
+                    </p>
+                    
+                    <div class="solution-highlight">
+                        <div class="solution-label">Mínimo Requerido</div>
+                        <div class="solution-value">26 Bibliotecarios</div>
+                    </div>
+
+                    <ul class="card-features">
+                        <li>Problema Primal</li>
+                        <li>Minimizar personal</li>
+                        <li>6 períodos de 4 horas</li>
+                        <li>Turnos de 8 horas</li>
+                    </ul>
+
+                    <a href="ejercicio3_bibliotecarios.html" class="card-button bibliotecarios">
+                        Ver Solución Detallada →
+                    </a>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 4 -->
+            <div class="exercise-card">
+                <div class="card-header dual">
+                    <div class="card-icon"></div>
+                    <h2>Ejercicio 4</h2>
+                    <p>Bibliotecarios (Dual)</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Problema dual simétrico del Ejercicio 3. Valora cada período mediante precios sombra usando teoría de dualidad.
+                    </p>
+                    
+                    <div class="solution-highlight dual">
+                        <div class="solution-label">Valor Dual Óptimo</div>
+                        <div class="solution-value">26 Unidades</div>
+                    </div>
+
+                    <ul class="card-features">
+                        <li>Problema Dual Simétrico</li>
+                        <li>Maximizar beneficio dual</li>
+                        <li>Precios sombra (y_j)</li>
+                        <li>Holgura Complementaria</li>
+                    </ul>
+
+                    <a href="ejercicio4_dual.html" class="card-button dual">
+                        Ver Análisis Dual →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER WITH INFO -->
+        <div class="footer">
+            <h3>Conceptos Clave Utilizados</h3>
+            <p class="footer-description">
+                Todos los problemas han sido resueltos aplicando técnicas modernas de optimización, 
+                verificando dualidad fuerte, análisis de sensibilidad y complementariedad de holgura.
+            </p>
+
+            <div class="techniques-list">
+                <div class="technique-badge">Primal-Dual</div>
+                <div class="technique-badge">Dualidad Fuerte</div>
+                <div class="technique-badge">Holgura Complementaria</div>
+                <div class="technique-badge">Programación Lineal</div>
+                <div class="technique-badge">Programación Entera</div>
+                <div class="technique-badge">Sensibilidad</div>
+                <div class="technique-badge">Precios Sombra</div>
+                <div class="technique-badge">PuLP Solver</div>
+            </div>
+
+            <p style="margin-top: 30px; color: #999; font-size: 0.9em;">
+                <strong>Generado:</strong> 13 de Abril de 2026 | 
+                <strong>Tecnología:</strong> Python • PuLP • HTML5
+            </p>
+        </div>
+    </div>
+</body>
+</html>

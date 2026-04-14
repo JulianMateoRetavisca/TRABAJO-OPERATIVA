@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -465,10 +465,11 @@
     <div class="container">
         <!-- NAV BUTTONS -->
         <div class="nav-buttons">
-            <a href="index.html" class="btn-staffing">Ej. 1: Staffing</a>
-            <span style="font-weight: bold; color: #f5576c;">Ej. 2: Mochila (actual)</span>
-            <a href="ejercicio3_bibliotecarios.html" class="btn-bibliotecarios">Ej. 3: Bibliotecarios</a>
-            <a href="ejercicio4_dual.html" class="btn-dual">Ej. 4: Dual</a>
+            <a href="home.html" style="display: inline-block; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; background: #f39c12; color: white; transition: all 0.3s ease; margin-right: 10px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">INICIO</a>
+            <a href="index.html" class="btn-staffing"> Ej. 1: Staffing</a>
+            <span style="font-weight: bold; color: #f5576c;"> Ej. 2: Mochila ← AQUÍ</span>
+            <a href="ejercicio3_bibliotecarios.html" class="btn-bibliotecarios"> Ej. 3: Bibliotecarios</a>
+            <a href="ejercicio4_dual.html" class="btn-dual"> Ej. 4: Dual</a>
         </div>
 
         <!-- HEADER -->
@@ -476,7 +477,7 @@
             <h1>Problema del Excursionista - Mochila 0/1</h1>
             <p>Maximizar Valor sin Exceder Restricción de Peso</p>
             <div class="highlight-solution">
-                Valor máximo: <span style="color: #27ae60;">130 Unidades</span> | Peso: <span style="color: #27ae60;">58/60 libras</span>
+                Valor Máximo: <span style="color: #27ae60;">130 Unidades</span> | Peso: <span style="color: #27ae60;">58/60 libras</span>
             </div>
         </div>
 
@@ -484,7 +485,7 @@
         <div class="content">
             <!-- SECCIÓN 1: DESCRIPCIÓN -->
             <div class="section">
-                <h2>Descripción del problema</h2>
+                <h2>Descripción del Problema</h2>
                 <p style="font-size: 1.05em; line-height: 1.8; color: #444; margin-bottom: 20px;">
                     Un excursionista planea salir de campamento y quiere llevar 5 artículos consigo. 
                     Sin embargo, tiene una restricción: <strong>puede cargar como máximo 60 libras</strong>. 
@@ -492,7 +493,7 @@
                     de artículos que maximiza el valor total sin exceder el peso límite?</strong>
                 </p>
 
-                <h3>Artículos disponibles</h3>
+                <h3>Artículos Disponibles</h3>
                 <table>
                     <thead>
                         <tr>
@@ -543,7 +544,7 @@
 
             <!-- SECCIÓN 2: SOLUCIÓN ÓPTIMA -->
             <div class="section">
-                <h2>Solución óptima</h2>
+                <h2>Solución Óptima</h2>
 
                 <div class="grid-3">
                     <div class="card">
@@ -563,7 +564,7 @@
                     </div>
                 </div>
 
-                <h3>Mochila óptima - artículos a llevar</h3>
+                <h3>Mochila Óptima - Artículos a Llevar</h3>
 
                 <div class="mochilas-visual">
                     <div class="mochila">
@@ -605,7 +606,7 @@
                 </div>
 
                 <div class="key-insight">
-                    <strong>Idea clave:</strong> Los artículos 2 y 3 tienen la mejor combinación de 
+                    <strong>Insight Clave:</strong> Los artículos 2 y 3 tienen la mejor combinación de 
                     valor y peso. Aunque el artículo 1 tiene mayor valor absoluto (100), es demasiado pesado 
                     (52 libras) y no deja espacio para otros artículos. La solución óptima aprovecha mejor 
                     la capacidad disponible.
@@ -614,7 +615,7 @@
 
             <!-- SECCIÓN 3: FORMULACIÓN MATEMÁTICA -->
             <div class="section">
-                <h2>Formulación matemática</h2>
+                <h2>Formulación Matemática</h2>
 
                 <h3>Variables de Decisión</h3>
                 <div class="formula-box">
@@ -1011,7 +1012,7 @@ Z − 100x₁ − 60x₂ − 70x₃ − 15x₄ − 15x₅ = 0.
 
             <!-- SECCIÓN 4: ANÁLISIS COMPARATIVO -->
             <div class="section">
-                <h2>Análisis comparativo</h2>
+                <h2>Análisis Comparativo</h2>
 
                 <h3>Método Óptimo vs Método Heurístico (Greedy)</h3>
 
@@ -1067,7 +1068,7 @@ Z − 100x₁ − 60x₂ − 70x₃ − 15x₄ − 15x₅ = 0.
 
             <!-- SECCIÓN 5: EXPLICACIÓN INTUITIVA -->
             <div class="section">
-                <h2>Explicación intuitiva</h2>
+                <h2>Explicación Intuitiva</h2>
 
                 <div class="comparison-grid">
                     <div class="comparison-card">
@@ -1131,10 +1132,10 @@ Z − 100x₁ − 60x₂ − 70x₃ − 15x₄ − 15x₅ = 0.
 
             <!-- SECCIÓN 6: CONCLUSIÓN -->
             <div class="section">
-                <h2>Conclusión y recomendación</h2>
+                <h2>Conclusión y Recomendación</h2>
 
                 <div style="background: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%); padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #f5576c; margin-bottom: 15px;">Respuesta final</h3>
+                    <h3 style="color: #f5576c; margin-bottom: 15px;">Respuesta Final</h3>
                     <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
                         <strong>El excursionista debe llevar los Artículos 2 y 3</strong> para maximizar el valor 
                         con respecto a su restricción de peso.
@@ -1164,7 +1165,7 @@ Z − 100x₁ − 60x₂ − 70x₃ − 15x₄ − 15x₅ = 0.
                         <p style="color: #856404;"><strong>Consideraciones</strong></p>
                         <ul style="margin-top: 10px; list-style: none; color: #856404;">
                             <li>Solo 2 libras de holgura</li>
-                            <li>Sin espacio para añadir artículos adicionales</li>
+                            <li>Sin espacio para añadir</li>
                             <li>Solución única óptima</li>
                             <li>No hay alternativas mejores</li>
                         </ul>
@@ -1174,7 +1175,7 @@ Z − 100x₁ − 60x₂ − 70x₃ − 15x₄ − 15x₅ = 0.
 
             <!-- SECCIÓN 7: APLICACIONES REALES -->
             <div class="section">
-                <h2>Aplicaciones reales del problema de mochila</h2>
+                <h2>Aplicaciones Reales del Problema de Mochila</h2>
                 
                 <table>
                     <thead>
